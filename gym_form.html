@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gym Suggestion Form</title>
+    <style>
+        /* CSS styles for the form */
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+
+        h2 {
+            margin-top: 3%;
+            text-align: center;
+            color: #000000;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #333;
+        }
+
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        input[type="submit"] {
+            width: 100%;
+            background-color: #000000;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #313131;
+        }
+
+        /* Additional styles for hiding/showing gym type section */
+        #gymTypeSection {
+            display: none;
+        }
+    </style>
+    <script>
+        function toggleGymType() {
+            var subscribe = document.getElementById("subscribe").value;
+            var gymTypeSection = document.getElementById("gymTypeSection");
+
+            if (subscribe === "yes") {
+                gymTypeSection.style.display = "block";
+            } else {
+                gymTypeSection.style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <br><h2>Find The Best GYM For You</h2><br>
+    <form action="filter.py" method="post">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required><br><br>
+
+        <label for="age">Age (NO UNDER 16'S) :</label>
+        <input type="number" id="age" name="age" min="16" required>
+        <br><br>
+
+        <label for="student">Are You A Student:</label>
+        <select id="student" name="student">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+
+        <label for="subscribe">Subscribe to a monthly subscription:</label>
+        <select id="subscribe" name="subscribe" onchange="toggleGymType()">
+            <option value="no">No</option>
+            <option value="yes">Yes</option>
+        </select><br><br>
+
+        <div id="gymTypeSection">
+            <label for="trainer_type">Select Gym Type:</label>
+            <select id="trainer_type" name="trainer_type" required>
+                <option value="super_off_peak">Super-off peak (10 am - 12 pm & 2 pm - 4 pm)</option>
+                <option value="off_peak">Off-peak (12 pm - 2 pm & 8 pm - 11 pm)</option>
+                <option value="anytime">Anytime</option>
+            </select><br><br>
+        </div>
+
+        <label for="add_swimming_pool">Add Swimming Pool Access:</label>
+        <select id="add_swimming_pool" name="add_swimming_pool">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+
+        <label for="add_classes">Add Classes:</label>
+        <select id="add_classes" name="add_classes">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+
+        <label for="Massage_Therapy">Add Massage Therapy:</label>
+        <select id="Massage_Therapy" name="Massage_Therapy">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+
+        <label for="Physiotherapy">Add Physiotherapy:</label>
+        <select id="Physiotherapy" name="Physiotherapy">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+        </select><br><br>
+
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

@@ -1,0 +1,142 @@
+*{
+      padding: 0;
+      margin:0;
+      text-decoration: none;
+      list-style: none;
+      box-sizing: auto;
+    }
+    .title{
+    text-align: center;
+
+    }
+
+    body {
+      font-family: Facón;
+      background: #ffffff
+    }
+    
+    nav{
+      background: #000000;
+      height: 80%;
+      width:auto;
+    }
+    
+    label.logo{
+      color: white;
+      font-size: 35px;
+      line-height: 80px;
+      padding: 0 100px;
+    }
+    
+    nav ul {
+      float: right;
+      margin-right: 20px;
+    }
+    
+    nav ul li{
+      display: inline-block;
+      line-height: 80px;
+      margin: 0 5px;
+    }
+    
+    nav ul li a{
+      color: white;
+      font-size: 17px;
+      border-radius:3px;
+      padding: 7px 13px;
+      text-transform: uppercase;
+    }
+    
+    a.active, a:hover{
+      background: #a1a1a1;
+      transition: .5s;
+    }
+  
+  
+    footer {
+      background-color: #333; 
+      padding: 50px;
+      padding-bottom: 1%; /* Adjust padding as needed */
+    }
+    
+    .navigation {
+      list-style-type: none;
+      padding: 0;
+      text-align: right;
+      margin-right: 30px;
+    }
+    
+    .navigation li {
+      display: inline-block;
+      margin-left: 30px;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+    
+    .navigation li a {
+      text-decoration: none;
+      color: #ffffff;
+    
+    }
+    
+    .navigation li a:hover {
+      background-color: #dddddd57;
+    }
+
+  /* CSS styles for content within .container */
+
+  .container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 0 20px;
+    margin-bottom: 50px;
+    margin-top: 0%;
+  }
+
+.container h2 {
+  text-align: center;
+
+}
+
+  h3 {
+    color: #333;
+    margin-top: 20px;
+    margin-bottom: 10px;
+  }
+
+  p {
+    line-height: 1.6;
+    margin-bottom: 15px;
+  }
+
+  ul {
+    margin-bottom: 20px;
+  }
+
+  ul li {
+    margin-bottom: 10px;
+  }
+
+ nav h1 {
+color: #a1a1a1;
+text-align: center;
+  }
+
+  .get-started-button {
+    margin-top: 20px;
+    background-color: #000000; 
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display:flex;
+    margin-top: 6%;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 8px;
+  }
+  
+  .get-started-button:hover {
+    background-color: #2f2f2f;
+  }
+  

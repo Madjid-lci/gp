@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Page</title>
+<style>
+    .title{
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    color: #403866;
+    text-align: center;
+    margin-top: 150px;
+}
+    .inputboxes{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+       
+        
+    }
+    .inputbox{
+            width: 400px;
+            border: 1px solid #ccc;
+            padding:25px;
+            background: #E6E6E6;
+            margin-bottom:10px;
+            border-radius: 5px;
+            transition: border-color 1s ease-in-out;
+           
+        }
+    .inputbox:focus{
+        border-color: blue;
+        outline: none;
+    }
+    .inputbox::placeholder{
+        font-family: Arial, Helvetica, sans-serif;
+        color:#8F8FA1;
+        font-weight: bold;
+        font-size: 15px;
+    }
+    #checkbox{
+       border: 4px solid blue;
+    }
+    .rememberme{
+        cursor: pointer;
+        display: inline-block;
+    }
+    .forgot{
+        display: inline-block;
+        margin-left: 250px;
+        margin-top: 10px;
+        font-size: 15px;
+        font-family: Arial, Helvetica, sans-serif;
+    }
+    .button{
+        width: 450px;
+        border: 1px solid #ccc;
+        padding: 25px;
+        border-radius: 5px;
+        background: #827FFE;
+        color: white;
+        font-family: Arial, Helvetica, sans-serif;
+        font-weight: bold;
+        font-size: 15px;
+        transition: background-color 0.5s ease-in-out;
+    }
+    .button:hover{
+        background-color: #403866;
+    }
+
+/* Back to Home Page Button Styles */
+.back-home {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px; /* Adjust the margin as needed */
+}
+
+.back-home a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #555; /* Dark gray background */
+  color: white;
+  text-decoration: none;
+  border-radius: 10px;
+  text-align: center;
+  margin: 20px auto 0; /* Center vertically and horizontally */
+  transition: background-color 0.3s;
+}
+
+.back-home a:hover {
+  background-color: #999; /* Lighter gray on hover */
+}
+    
+</style>
+</head>
+<body>
+    <div class="title">
+        <h1>LOGIN</h1>
+    </div>
+    <div class="inputboxes">
+        <form action="login.py" method="post">
+            <input type="text" name="email" class="inputbox" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Email" title="Enter a valid email address">
+            <br>
+            <input type="password" name="Password" class="inputbox" placeholder="Password" title="Password" required>
+            <br>
+            <input type="checkbox" name="remember" class="rememberme">
+            <label for="remember" class="rememberme" style="font-family: Arial, Helvetica, sans-serif;">Remember me</label>
+            <p class="forgot">Forgot?</p>
+            <br>
+            <button type="submit" class="button">LOGIN</button>
+        </form>
+        <div id="error-message" style="color: red;"></div>
+    </div>
+    <script>
+        if (new URL(window.location.href).searchParams.get("error") === "true") {
+            document.getElementById("error-message").textContent = "Wrong Email or Password. Please try again.";
+        }
+    </script>
+    
+    <div class="back-home">
+        <a href="home.html">Back to Home page</a>
+    </div>
+</body>
+</html>

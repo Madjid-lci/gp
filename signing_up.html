@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup Page</title>
+    <link href="style.css" rel="stylesheet" type="text/css" />
+    
+    <style>
+        .error-message{
+            color: red;
+        }
+        .inputcontainer{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+        }
+        .inputbox{
+            width: 400px;
+            border: 1px solid #ccc;
+            padding:10px;
+            margin-bottom:10px;
+            border-radius: 5px;
+        }
+        .labels{
+            margin-right: 330px;
+            margin-bottom: 10px;
+          
+        }
+        .title{
+            color: #333;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .phone-container {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+
+.vertical-line {
+    width: 1px;
+    border-right: 1px solid #ccc; /* Adjusted border thickness */
+    height: 30px;
+    margin-bottom: 10px;
+}
+.button{
+    margin-right: 220px;
+    padding:20px;
+    width:200px;
+    background:#FF9900 ;
+    color:white;
+
+}
+.hyperlink{
+    text-decoration: none;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.hyperlink:hover{
+    color:black;
+}
+a:visited{
+    color:blue;
+}
+
+    </style>
+
+
+</head>
+<script src="https://www.google.com/recaptcha/api.js" async defer></script> <!--Scripts from google recaptcha-->
+<!--async makes it so that the html page keeps loading while it gets the recaptcha working-->
+<!--defer makes it so that the rest of the html page loads and then it loads this script-->
+<script>
+    function onSubmit(token) {  //an onsubmit function is defined and checks if they a token exists or not if not it alearts them to click the recaptcha 
+        if (token=="") {
+            alert ("please verify that you are a human."); //a token is created when verifying the recaptcha
+            return false; //prevents form submission
+            
+        }
+    }
+
+  </script>
+
+
+<body>
+
+
+    <!-------------------------- Navigation Bar ------------------------>
+  <nav>
+    <label class="logo">GSO LAGO</label>
+    <ul>
+      <li><a href="home.html"> Home </a></li>
+      <li><a href="aboutus.html"> About us </a></li>
+      <li><a href="#"> Services </a></li>
+      <li><a href="#"> Contact Us </a></li>
+    </ul>
+  </nav>
+ <!--------------------------------------------------------------------->
+
+
+    <h1 class="title">Signup</h1> <!--Makes the heading bold and colored-->
+    <form action="index.py" method="post" id="registrationForm" enctype="multipart/form-data" onsubmit="return onSubmit(grecaptcha.getResponse())"> <!--links the form to the python script and makes it a post method-->
+    <!--Has an id of registrationForm needed for later and enctype allows files to be uploaded to the server -->
+    <!--Getresponse is a method from recaptcha to collect the users response token-->
+    <!--the onsubmit button makes it so that when user clicks submit  it calls the onsubmit function to check if recaptcha is passed or not -->
+    <!--and if they did not it will alert them-->
+    <div class="inputcontainer">
+    <label for="FirstName" class="labels">First Name *</label>
+    <input type="text" name="FirstName" class="inputbox" pattern="[A-Za-z]+" placeholder="First Name" title="First Name" required > <!--Allows user to type input-->
+    <!--A specific pattern is made so that they can only input the Alphabet and placeholder gives them a type of hint on what to expect-->
+    <br>
+    <label for="LastName" class="labels">Last Name *</label>
+    <input type="text" name="LastName" class="inputbox" pattern="[A-Za-z]+" placeholder="Last Name" title="Last Name" required><!--required makes it so that user needs to input something-->
+    <br>
+    <label for="email" style="margin-right: 310px; margin-bottom: 10px;">Email Address *</label>
+    <input type="text" name="email" class="inputbox" required pattern="[^@\s]+@[^@\s]+\.[^@\s]+" placeholder="Email" title="Enter a valid email address">
+    <!--required makes the email required and pattern makes it so that they can enter any length of characters that is not a @ or a whitespace,-->
+    <!--It then requires "@" to be after that then a "." to be there then any length of characters again-->
+    <br>
+    <label for="Password" style="margin-right: 345px; margin-bottom: 10px;">Password *</label>
+    <input type="password" name="Password" class="inputbox"  id="password" placeholder="Password"  title="Password" required><!--the input type is set to password making it in a format of a password-->
+    <br>
+    <label for="Confirm Password" style="margin-right: 290px; margin-bottom: 10px;">Confirm Password *</label>
+    <input type="password" name="Confirm Password" class="inputbox" id="confirmPassword" placeholder="Confirm Password" title="Confirm Password" required>
+    <span id="passwordError"class="error-message"></span> <!--Span is used to apply styles to specific section of text , it is given an id and class-->
+
+    <br>
+    <label for="DOB" style="margin-right: 320px; margin-bottom: 10px;">Date of Birth *</label>
+    <input type="date" name="DOB" class="inputbox" title="Date of Birth" required> <!--allows user to select date with date picker as type is date-->
+    <br>
+    <label for="Phone" style="margin-right: 310px; margin-bottom: 10px;">Phone Number *</label>
+    <div class="phone-container">
+    <select name="country_code" style="width: 80px; padding: 8px; border-radius: 5px; margin-bottom: 10px; margin-left: 80px;outline: none;"><!--Allows user to select from one of the options-->
+        <option value="+1">United States(+1)</option> <!--Allows user to choose any of the options optionally-->
+        <option value="+44">United Kingdom(+44)</option>
+        <option value="+33">France(+33)</option>
+        <option value="+49">Germany(+49)</option>
+        <option value="+91">India(+91)</option>
+        <option value="+86">China(+86)</option>
+        <option value="+55">Brazil(+55)</option>
+        <option value="+30">Greece(+30)</option>
+        <option value="+39">Italy(+39)</option>
+        <option value="+20">Egypt(+20)</option>
+    </select>
+    <span class="vertical-line"></span>
+    <br> 
+    <input type="tel" name="Phone" style="width: 320px;border: 1px solid #ccc;padding:10px;margin-bottom:10px;border-radius: 5px; margin-right: 80px;" pattern="[0-9]{9,12}" placeholder="Between 9 to 12 digits" required>
+    <!--type="tel" specifies that its a phone number-->
+    <!--The pattern makes it so that user can only type numbers from 0-9 and not characters-->
+    <!--placeholder gives the user a kind of hint to tell them how format should be-->
+    </div>
+    <br>
+    <fieldset style="width: 200px; margin-right: 200px; margin-bottom: 20px;">
+    <legend>Are you a Student?</legend>
+    <label for="Student" style="font-weight: bold;">Yes</label> 
+    <input type="radio" name="Student" value="yes" onclick="showFileInput()"> <!--Makes it so that the function is displayed once clicked on-->
+    <label for="Student" style="font-weight: bold;">No</label>
+    <input type="radio" name="Student" value="no" onclick="hideFileInput()" checked><!--pre checks the No button-->
+    </fieldset>
+    <fieldset id="fileUploadSection" hidden> <!--Hides the fileUploadSection, fieldset is used to group related form elements together-->
+        <legend style="font-weight: bold;">Student ID photo Upload: </legend><!--provides title or caption for the fieldset-->
+        <label for="studentID"style="font-weight:bold">Upload Student ID photo:</label>
+        <input type="file" name="studentID" accept="image/jpeg, image/png, image/jpg"> <!--The type is file so that it allows user to brow and input a file-->
+    </fieldset> <!--The file would only accept image of png and jpeg and jpg as specified-->
+
+    <div class="g-recaptcha" style="margin-right: 120px;" data-sitekey="6LdEJ0kpAAAAAKB8MYc237UGzyRazkSdas40zGRX"></div> <!--Key from google recaptcha responsible for making recaptcha appear-->
+      <br>
+      
+    <p style="margin-right: 260px;">Have an account? <a href="Login.html" class="hyperlink">Log in</a></p>
+    <input type="submit" value="CREATE ACCOUNT" class="button"> <!--Submit button to send the form inputs to the server-->
+    </div>
+    </form>
+
+    <script>
+        function showFileInput(){ //function to show the user the file upload section to the user
+            document.getElementById('fileUploadSection').hidden=false; //searches the form element by the id of fileuploadsection 
+            //unhides it by setting the hidden to false once the function is called
+            document.querySelector('input[name="studentID"]').setAttribute('required', 'required')//selects element that has the input name="studentID"
+            //sets its attribute to make it required so when the function is called the user must upload a file
+        }
+        function hideFileInput(){  
+            document.getElementById('fileUploadSection').hidden=true; //function that hides the fileuploadsection section unless showfileinput function is called
+            document.querySelector('input[name="studentID"]').removeAttribute('required')//removes the attribute of needing to sumbit a file when they press no to student
+        }
+        document.getElementById("registrationForm").addEventListener("submit", function(event) {//searches for the id=registrationform which is in the <form> tag
+            //adds an event listener and attaches it to the submit button so when user clicks submit it calls the function(event) 
+            var password = document.getElementById("password").value; //searches for the value input of id password and assigns it to the value of password
+            var confirmPassword = document.getElementById("confirmPassword").value;//searches for the value input of id Confirmpassword and assigns it to the value of confirmpassword
+            var passwordError = document.getElementById("passwordError");//searches for the value input of id passworderror and assigns it to the value of Passworderror
+
+            if (password.length<4) { //checks if the input password is less than 4 characters or not
+                passwordError.textContent = "Password must be at least 4 characters long";
+                event.preventDefault(); // Prevents form submission if password is less than 4 characters long
+            } else {
+                passwordError.textContent = ""; //clears any previous error messages related to password
+            }
+
+            if (password !== confirmPassword) { //checks if password and confirmpassword do not match
+                passwordError.textContent = "Passwords do not match";
+                event.preventDefault(); // Prevents form submission
+            }else{
+                passwordError.textContent=""; //if they do it clears any previous error messages related to password matching
+            }
+        });
+
+
+        
+        
+
+        
+
+
+
+
+
+
+
+
+    
+        
+
+
+
+    </script>
+
+
+
+
+    </body>
+    </html>
